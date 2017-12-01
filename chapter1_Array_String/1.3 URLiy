@@ -1,0 +1,20 @@
+# what I leared:
+# 1. in C++ and JAVA, the list's length is fixed. Not like Python, it don't have thise problem. 
+# so, for any of those small string replaced by a bigger string, you needed to consider if the list
+# will not be able to handle all the charators. But, Python don't have this requirment.
+# 
+
+string = '   abcd   edg '
+
+def main (string):
+    head, tail = '', ''
+    if string[0] == ' ':
+        head = '%20'
+    if string [-1] == ' ':
+        tail = '%20'
+    slist = string.split()
+    rstr = '%20'.join(slist)
+    return head + rstr + tail
+
+if __name__ == '__main__':
+    print main (string)
