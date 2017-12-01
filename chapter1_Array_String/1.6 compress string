@@ -1,0 +1,19 @@
+# it is just that remeber the string contantnce needed a lots of time, it's better to use append:
+
+string = 'aaabbbcccdddaaa'
+
+def main (str1):
+    curr, counter = str1[0], 0
+    result = ''
+    for i in str1:
+        if i != curr:
+            result = result + curr + str(counter)
+            curr = i
+            counter = 0
+        if i == curr:
+            counter += 1
+    result = result + curr + str(counter)
+    return result
+
+if __name__ == '__main__':
+    print main (string)
