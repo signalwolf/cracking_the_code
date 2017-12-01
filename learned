@@ -1,0 +1,4 @@
+1. for string, if you put string 1 = string1 + string2, it will take longer time, if first open a space call temp, 
+then copy string 1 into temp, then copy string2 into temp, then copy temp to string1, so it take a lot of time. It's 
+better to use append for this method. 
+2. 
