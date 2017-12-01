@@ -5,6 +5,7 @@
 # 3. when white space and other special char is not count, think twice. You needed to
 # limited the string by check the ord(i) is within ord('a') and ord ('z'). You must know
 # the ord ('a') != ord ('A')
+# 4. must redo this with bit change, the method looks so great. 
 
 
 string = 'aaacbaccc'
