@@ -3,3 +3,20 @@
 # 2. for string, you needed to check if space is considered or not. Don't think string is a single string, it could be mutiple string 
 # connected with white space or others
 # 3. 
+
+str1 = 'abcd'
+str2 = 'bcda'
+
+def main (str1, str2):
+    checklist = [0] * 128
+    for i in str1:
+        checklist[ord(i)] += 1
+    for i in str2:
+        checklist[ord(i)] -= 1
+        # it's better to use if checklist[ord(i)] < 0:  
+        if checklist[ord(i)] == -1:
+            return False
+    return True
+
+if __name__ == '__main__':
+    print main (str1, str2)
