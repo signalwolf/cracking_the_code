@@ -1,0 +1,21 @@
+# what I learned:
+# 1. as mentioned before, you must ask if white space and case sencitive questions. 
+
+
+string = 'aaacbaccc'
+
+def main(str):
+    checklist = [0] * 128
+    for i in str:
+        if checklist[ord(i)] == 0:
+            checklist[ord(i)] = 1
+        elif checklist[ord(i)] == 1:
+            checklist[ord(i)] = 0
+    if sum(checklist) == len(str) %2:
+        return True
+    else:
+        return False
+
+
+if __name__ == '__main__':
+    print main (string)
