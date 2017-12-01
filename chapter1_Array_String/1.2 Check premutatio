@@ -1,0 +1,5 @@
+# what i learned from this one:
+# 1. premutation means reoder. 
+# 2. for string, you needed to check if space is considered or not. Don't think string is a single string, it could be mutiple string 
+# connected with white space or others
+# 3. 
