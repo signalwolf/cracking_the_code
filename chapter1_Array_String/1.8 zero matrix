@@ -1,4 +1,5 @@
 # two list looks OK, but actually you can use first column and first row to save those info. 
+# question: can I use first two rows? think about it
 
 matrix = [
     [0,2,3,4,5],
