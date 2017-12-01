@@ -1,0 +1,31 @@
+# two list looks OK, but actually you can use first column and first row to save those info. 
+
+matrix = [
+    [0,2,3,4,5],
+    [6,1,8,9,10],
+    [1,2,3,0,5],
+    [1,2,3,4,5],
+    [1,2,3,0,5],
+    [0,3,1,2,5]
+]
+
+def main (matrix):
+    row, column = len(matrix), len(matrix[0])
+    zeros_row = []
+    zeros_column = []
+    for i in xrange(row):
+        for j in xrange(column):
+            if matrix[i][j] == 0:
+                zeros_row.append (i)
+                zeros_column.append (j)
+    for i in set(zeros_row):
+        matrix[i] = [0] * column
+    for i in set(zeros_column):
+        for j in xrange(row):
+            matrix[j][i] = 0
+    return matrix
+
+
+
+if __name__ == '__main__':
+    print main(matrix)
