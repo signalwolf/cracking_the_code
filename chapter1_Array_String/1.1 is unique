@@ -1,0 +1,21 @@
+# what I learn from this project is:
+  # 1. in string checking case, you must ask if this is case sensitive. Is A == a? 
+  # 2. For ASIC code, it only have 128 unit. So for any of those string case, you can 
+  # simply open an 128 size list, then use it to check the duplicate or not
+  # 3. ord() and char () can help to transfer the charator to int or from int to charator. very useful
+  
+string1 = 'abcd'
+
+def main (string):
+    checklist = [0] * 128
+    i = 0
+    while i != len(string):
+        if checklist[ord(string[i])] == 0:
+            checklist[ord(string[i])] += 1
+        else:
+            return False
+        i += 1
+    return True
+
+if __name__ == '__main__':
+    print main (string1)
