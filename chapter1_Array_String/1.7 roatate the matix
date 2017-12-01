@@ -1,0 +1,40 @@
+# it can rotate it in same time, i used three for loop to do this which 
+# looks not efficient. Think a way to do it in same time. 
+
+matric = [
+    [1,2,3,4,5],
+    [6,7,8,9,10],
+    [1,2,3,4,5],
+    [1,2,3,4,5],
+    [1,2,3,4,5]
+]
+
+def main (matric):
+    row, column = len(matric), len(matric[0])
+    if row != column:
+        return False
+    t = 0
+    while t * 2 <= row:
+        # add_end = matric [t][column - 1 - t]
+        for i in xrange(row - 1 - t * 2):
+            temp = matric[t][i + t]
+            matric[t][i + t] = matric [i + t][column - 1 - t]
+            matric[i + t][column - 1 - t] = temp
+        #print matric
+        for i in xrange(row - 1 - t * 2):
+            temp = matric[row -1 - t][column - 1 - i - t]
+            matric[row - 1 - t][column - 1 - i - t] = matric[t][i + t]
+            matric[t][i + t] = temp
+        # print matric
+        for i in xrange(row - 1 - t * 2):
+            temp = matric[row - 1 - i - t][t]
+            matric[row - 1 - i - t][t] = matric[t][i + t]
+            matric[t][i + t] = temp
+        # print matric
+        t += 1
+    return matric
+
+
+if __name__ == '__main__':
+    print matric
+    print main (matric)
