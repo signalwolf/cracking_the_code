@@ -1,9 +1,15 @@
 # what I learned:
 # 1. as mentioned before, you must ask if white space and case sencitive questions. 
+# 2. it is a good way to think about problem, first, what's the defination of palidorm?
+# and then what's the feature it have ? then how to check this feature?
+# 3. when white space and other special char is not count, think twice. You needed to
+# limited the string by check the ord(i) is within ord('a') and ord ('z'). You must know
+# the ord ('a') != ord ('A')
 
 
 string = 'aaacbaccc'
-
+# this function could have problem, if the white char and other special char is not count
+# this function is wrong. 
 def main(str):
     checklist = [0] * 128
     for i in str:
