@@ -6,6 +6,8 @@
 # Idea2: if there is a intersection, since we know the tail position and the lenght. Then we move the head 
 # to make two linked list have same size. So we compare node by node to determine which one is begining of 
 # the intersection
+# Think about the problem and then write. Not following your previous experience.
+
 
 # Definition for singly-linked list.
 # class ListNode(object):
