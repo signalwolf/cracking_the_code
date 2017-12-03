@@ -1,0 +1,46 @@
+# this is leetcode 160. Intersection of Two Linked Lists, oliver just got this question 
+# the basic idea is very simply, I think too much about this problem. There is no needed to 
+# connect the head to tail.
+# Idea1: if there is intersection of this two linked list, the last node must be same. (not val). 
+# based on this, you can find out if the two linked list have intersection or not
+# Idea2: if there is a intersection, since we know the tail position and the lenght. Then we move the head 
+# to make two linked list have same size. So we compare node by node to determine which one is begining of 
+# the intersection
+
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution(object):
+    def getIntersectionNode(self, headA, headB):
+        """
+        :type head1, head1: ListNode
+        :rtype: ListNode
+        """
+        if headA == None or headB == None:
+            return None
+        lenA, lenB = 0, 0 
+        tailA, tailB = headA, headB
+        while tailA.next != None:
+            tailA = tailA.next
+            lenA += 1
+        while tailB.next != None:
+            tailB = tailB.next
+            lenB += 1
+        if tailA != tailB:
+            return None
+        diff = lenA - lenB
+        if diff > 0:
+            while diff != 0:
+                headA = headA.next
+                diff -= 1
+        elif diff < 0:
+            while diff != 0:
+                headB= headB.next
+                diff += 1
+        while headA != headB:
+            headA = headA.next
+            headB = headB.next
+        return headA
