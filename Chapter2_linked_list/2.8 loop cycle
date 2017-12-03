@@ -1,0 +1,36 @@
+#  the loop part needed to be very carefully, the initial code I wrote have mutiple errors in some conner case.
+# first, my initial point set to slow, fast = head, head.next. So this break the rule, it goes K step and other goes 2K + 1.
+# so this is result in errors. For example [1,2] and 2 connected to 1, so, your intial point is [1] [2], meet point is [2]. 
+# and when you statr an new point in beginning, you will find slow = [1], fast = [2], slow = [2], fast = [1]. this will loop 
+# forever. 
+# second is the 
+
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution(object):
+    def detectCycle(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+        if head == None:
+            return None
+        slow, fast = head, head
+        while fast != None and fast.next != None:
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast:
+                break
+        if fast == None or fast.next == None:
+            return None
+        else:
+            slow = head
+            while slow != fast:
+                slow = slow.next
+                fast = fast.next
+            return fast
+        
