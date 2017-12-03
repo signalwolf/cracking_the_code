@@ -1,0 +1,65 @@
+# remove duplicate from unsorted linked list
+# method 1: dictionary 
+# method 2: iteration 
+
+class ListNode(object):
+
+    def __init__(self, val, next=None):
+        self.val = val
+        self.next = next
+
+class Solution:
+    def listtolinedlist (alist):
+        print alist
+        dummy = ListNode(0)
+        head = dummy
+        for i in alist:
+            currNode = ListNode(i)
+            dummy.next = currNode
+            dummy = dummy.next
+        dummy.next = None
+        return head.next
+
+    def listprint (head):
+        result = []
+        while head != None:
+            result.append ( head.val)
+            head = head.next
+        print result
+
+    alist = [1,2,3,4,2,6]
+    head = listtolinedlist(alist)
+
+    def remove_dup1(head):
+        dicts = {}
+        dicts[head.val] = 1
+        pre, curr = head, head.next
+        while curr != None:
+            if curr.val in dicts:
+                pre.next = curr.next
+                curr = curr.next
+            else:
+                dicts[curr.val] = 1
+                curr = curr.next
+                pre = pre.next
+        return head
+
+    def remove_dup2(head):
+        curr = head
+        pointer = head.next
+        while curr.next != None:
+            pre = curr
+            while pointer.next != None:
+                if curr.val == pointer.val:
+                    pre.next = pointer.next
+                    pointer = pointer.next
+                else:
+                    pointer = pointer.next
+                    pre = pre.next
+            curr = curr.next
+        return head
+
+    listprint (remove_dup1(head))
+    listprint(remove_dup2(head))
+
+
