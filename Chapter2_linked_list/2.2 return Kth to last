@@ -1,0 +1,48 @@
+# two pointer solution. one is k step ahead
+# there is another solution which use recursion and could resolve the issue as well. 
+# the basic idea is keep asking if curr node.next is null or not. If it is null, then return 0, if it is not 
+# then goes deep to next level. Then return next level's feedback + 1
+
+class ListNode(object):
+
+    def __init__(self, val, next=None):
+        self.val = val
+        self.next = next
+
+class Solution:
+    def listtolinedlist (alist):
+        print alist
+        dummy = ListNode(0)
+        head = dummy
+        for i in alist:
+            currNode = ListNode(i)
+            dummy.next = currNode
+            dummy = dummy.next
+        dummy.next = None
+        return head.next
+
+    def listprint (head):
+        result = []
+        while head != None:
+            result.append ( head.val)
+            head = head.next
+        print result
+
+    alist = [1,2,3,4,2,6]
+    head = listtolinedlist(alist)
+
+    def kth_to_last (head, k):
+        front = head
+        while k != 0 and front != None:
+            front = front.next
+            k -= 1
+        if k != 0:
+            return -1
+        else:
+            back = head
+            while front != None:
+                front = front.next
+                back = back.next
+        return back.val
+
+    print (kth_to_last(head, 7))
