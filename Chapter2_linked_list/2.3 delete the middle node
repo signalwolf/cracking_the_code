@@ -1,0 +1,6 @@
+  # delete the middle node have mutiple way, since we don't have the previous node inforamtion
+  # we can't let pre.next = curr.next to delete the curr node.
+  # so the way to resolve this issue is 
+  # step1: copy curr.next.val to curr.val, and copy curr.next.next == curr.next.
+  # step2: remove the next val.
+  # altough in real case, the middle node is not deleted, but in real one, it looks like it been deleted. 
