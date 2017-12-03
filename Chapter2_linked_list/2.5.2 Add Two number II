@@ -1,0 +1,61 @@
+# Leetcode 445: 
+# Two challenge: first, you needed to match the two linked list, then you needed to go from end to front.
+# goes from end to front can be esaier handle by the recursion method. 
+
+# the other solution included, reverse the two linkedlist and then add up like before.
+# there is another solution, you can simply add everything to a list then convert to int and add together, 
+# then form a new linked list.
+
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution(object):
+    def helper (self, l1, l2, dummy):
+        if l1 == None and l2 == None:
+            return 0
+        else:
+            advance = self.helper (l1.next, l2.next, dummy) 
+            curr_val = (advance + l1.val + l2.val) % 10
+            curr_node = ListNode (curr_val)
+            pre = dummy.next
+            dummy.next = curr_node
+            curr_node.next = pre
+            # print curr_val, (advance + l1.val + l2.val) / 10
+            return (advance + l1.val + l2.val) / 10
+        
+    def addTwoNumbers(self, l1, l2):
+        """
+        :type l1: ListNode
+        :type l2: ListNode
+        :rtype: ListNode
+        """
+        len1, len2 = 0, 0
+        l1_tail, l2_tail = l1, l2
+        while l1_tail != None:
+            len1 += 1
+            l1_tail = l1_tail.next
+        while l2_tail != None:
+            len2 += 1
+            l2_tail = l2_tail.next
+        diff = len1 - len2
+        dummy = ListNode (0)
+        if diff > 0:
+            while diff != 0:
+                add = ListNode (0)
+                add.next = l2
+                l2 = add
+                diff -= 1
+        elif diff < 0:
+            while diff != 0:
+                add = ListNode (0)
+                add.next = l1
+                l1 = add
+                diff += 1
+        dummy.val = self.helper (l1,l2,dummy)
+        if dummy.val == 0:
+            return dummy.next
+        else:
+            return dummy
