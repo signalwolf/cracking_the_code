@@ -1,0 +1,38 @@
+"""
+Definition of TreeNode:
+class TreeNode:
+    def __init__(self, val):
+        self.val = val
+        self.left, self.right = None, None
+"""
+class Solution:
+    """
+    @param root: The root of binary tree.
+    @return: True if the binary tree is BST, or false
+    """ 
+    def helper (self, root):
+        if root is None:
+            return []
+        else:
+            left = self.helper (root.left)
+            right = self.helper (root.right)
+            return left + [root.val] + right
+        
+    def isValidBST(self, root):
+        # write your code here
+        if root is None:
+            return True
+        else:
+            inorderresult = self.helper(root)
+            if len(inorderresult) == 1:
+                return True
+            else:
+                start = 0
+                end = len(inorderresult) - 1
+                while start < end:
+                    if inorderresult[start] < inorderresult[start + 1]:
+                        start += 1
+                    else:
+                        start = end
+                        return False
+                return True
