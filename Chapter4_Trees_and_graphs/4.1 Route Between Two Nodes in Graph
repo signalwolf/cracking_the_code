@@ -1,6 +1,7 @@
-# search的时候是不会考虑当前的node的
+# BFS search的时候是不会考虑当前的node的
 # BFS: 由于题目给出了graph，这个在BFS中可以使用list来代替dictionary的作用
 # 这道题也可以通过DFS来解
+# this is Lintcode 176. 
 """
 Definition for a Directed graph node
 class DirectedGraphNode:
