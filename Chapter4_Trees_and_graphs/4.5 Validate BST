@@ -36,3 +36,49 @@ class Solution:
                         start = end
                         return False
                 return True
+
+"""
+Definition of TreeNode:
+class TreeNode:
+    def __init__(self, val):
+        self.val = val
+        self.left, self.right = None, None
+"""
+
+// Solution 2: in order tranverse and then check if it is increasing order nums: 
+class Solution:
+    """
+    @param: root: The root of binary tree.
+    @return: True if the binary tree is BST, or false
+    """
+    def inorder (self, root):
+        if root.left == None and root.right == None:
+            return [root.val]
+        left, right = [], []
+        if root.left != None:
+            left = self.inorder (root.left)
+        if root.right != None:
+            right = self.inorder (root.right)
+        return left + [root.val] + right
+        
+    def check (self, nums):
+        for i in xrange(len(nums) - 1):
+            if nums[i] < nums[i + 1]:
+                continue
+            else:
+                return False
+        return True
+    
+    def isValidBST(self, root):
+        # write your code here
+        if root is None:
+            return True
+        # recursion to find the issue:
+        # divide and conquer:
+        # define: receive a node and goes deeper to its left node, then goes to right node
+        # shirnk: a bigger tree can isolate to a smaller tree
+        # out: if it is leaf node, return it's value; if not, after left node return, add curr, then right node
+        #inorder = []
+        inorder = self.inorder (root)
+        return self.check(inorder)
+        
