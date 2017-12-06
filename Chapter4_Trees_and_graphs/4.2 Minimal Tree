@@ -1,0 +1,22 @@
+# 这个问题我利用了BST的定义，以及这是个Sorted array的事实。不断的提出中间点然后左边的中间点作为左子树，右边的中间点作为右子树
+
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def sortedArrayToBST(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: TreeNode
+        """
+        A = nums
+        if len(A) == 0:
+            return None
+        root = TreeNode (A[len(A)/2])
+        root.left = self.sortedArrayToBST (A[:len(A)/2])
+        root.right = self.sortedArrayToBST (A[len(A)/2 + 1:])
+        return root
