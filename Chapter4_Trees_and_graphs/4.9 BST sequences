@@ -1,1 +1,20 @@
 # print all possiable combinations
+# 难点在于说左边返回了值与右边返回的值之间怎么连接形成一个新的有序的list of lists
+# 下面的code就可以实现它
+
+list1, list2 = [1, 2], [3, 4]
+prefix = [0]
+results = []
+
+def helper (list1, list2, prefix, results):
+    if len(list1) == 0 or len(list2) == 0:
+        result = list(prefix)
+        result += list1 + list2
+        results.append (result)
+    else:
+        helper (list1[1:], list2, prefix + [list1[0]], results)
+        helper (list1, list2[1:], prefix + [list2[0]], results)
+
+helper (list1, list2, prefix, results)
+print results
+
