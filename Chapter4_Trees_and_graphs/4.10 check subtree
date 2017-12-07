@@ -1,2 +1,47 @@
 # T1, T2
 # what if it is big
+"""
+Definition of TreeNode:
+class TreeNode:
+    def __init__(self, val):
+        self.val = val
+        self.left, self.right = None, None
+"""
+
+
+class Solution:
+    """
+    @param: T1: The roots of binary tree T1.
+    @param: T2: The roots of binary tree T2.
+    @return: True if T2 is a subtree of T1, or false.
+    """
+    def sametree (self, T1, T2):
+        if T1 is None and T2 is None:
+            return True
+        if T1 is None or T2 is None:
+            return False
+        if T1.val == T2.val:
+            left = self.sametree(T1.left, T2.left)
+            right = self.sametree(T1.right, T2.right)
+            if left and right:
+                return True
+        return False
+        
+    def isSubtree(self, T1, T2):
+        # write your code here
+        if T2 is None:
+            return True
+        if T1 is None:
+            return False
+        queue = [T1]
+        while queue:
+            curr = queue.pop (0)
+            if curr.left:
+                queue.append (curr.left)
+            if curr.right:
+                queue.append (curr.right)
+            if curr.val == T2.val and self.sametree(curr, T2):
+                return True
+        return False
+                
+        
