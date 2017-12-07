@@ -1,0 +1,9 @@
+# 这道题自己仔细的思考并枚举一下还是能发现其中的规律的：
+# 规律有两条：
+# 1. 如果当前子树有右子树，那么右子树的最左节点就是next
+# 2. 如果当前子树无右子树，那么向上回溯直至发现某点是其父节点的左节点，然后return这个父节点。注意的是如果发现已经到了整个
+# 树的根，那么就代表它是整个树的最右节点，也就意味着return None. 而这一步可以通过判断 root.parent == None 来决定
+# code: 
+# while root.parents.left != None and root.parent.left != root:
+#     root = root.parsents
+# return root.parent
