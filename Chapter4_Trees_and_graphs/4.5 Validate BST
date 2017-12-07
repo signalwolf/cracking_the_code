@@ -2,7 +2,7 @@
 # 第一种方法就是根据转换来的，inorder traverse的结果如果是increasing list那么就是valid. 只是如果一个点左右两边都是
 # 与node.val相同的话，其实应该算not vaild，但是这种方法算不出来
 # 第二种方法就是根据定义，我们定义当前的最大和最小，向左走就改变最大，向右走就改变最小。逐层的判断下去直到leaf节点. 注意说min, max的定义.
-# 奇怪的是两种方法在lintcode上的跑的时间都差不多
+# 奇怪的是两种方法在lintcode上的跑的时间都差不多，看了下，leetcode上差距还是有的。第二个方法更优秀，而且能够处理duplicate的情况。
 
 """
 Definition of TreeNode:
