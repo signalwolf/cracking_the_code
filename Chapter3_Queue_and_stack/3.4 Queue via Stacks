@@ -1,0 +1,33 @@
+class MyQueue:
+    
+    def __init__(self):
+        # do intialization if necessary
+        self.stack = []
+        self.back_tracking = []
+
+    """
+    @param: element: An integer
+    @return: nothing
+    """
+    def push(self, element):
+        # write your code here
+        self.stack.append (element)
+        self.back_tracking = self.stack [::-1]
+        #print self.stack, self.back_tracking
+
+    """
+    @return: An integer
+    """
+    def pop(self):
+        # write your code here
+        node = self.back_tracking.pop()
+        self.stack = self.back_tracking[::-1]
+        # print self.stack, self.back_tracking
+        return node
+
+    """
+    @return: An integer
+    """
+    def top(self):
+        # write your code here
+        return self.back_tracking[-1]
