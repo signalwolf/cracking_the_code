@@ -1,7 +1,8 @@
 # 两种方法，如果当前的BST中允许duplicate, 那么就只有一种方法
 # 第一种方法就是根据转换来的，inorder traverse的结果如果是increasing list那么就是valid. 只是如果一个点左右两边都是
 # 与node.val相同的话，其实应该算not vaild，但是这种方法算不出来
-# 第二种方法就是根据定义，我们定义当前的最大和最小，向左走就改变最大，向右走就改变最小。逐层的判断下去直到leaf节点
+# 第二种方法就是根据定义，我们定义当前的最大和最小，向左走就改变最大，向右走就改变最小。逐层的判断下去直到leaf节点. 注意说min, max的定义.
+# 奇怪的是两种方法在lintcode上的跑的时间都差不多
 
 """
 Definition of TreeNode:
@@ -11,7 +12,8 @@ class TreeNode:
         self.left, self.right = None, None
 """
 
-// Solution 2: in order tranverse and then check if it is increasing order nums: 
+// Solution 1: in order tranverse and then check if it is increasing order nums: 
+// time: 1210ms
 class Solution:
     """
     @param: root: The root of binary tree.
@@ -47,4 +49,43 @@ class Solution:
         #inorder = []
         inorder = self.inorder (root)
         return self.check(inorder)
-        
+ 
+# solution #2:1218ms 
+"""
+Definition of TreeNode:
+class TreeNode:
+    def __init__(self, val):
+        self.val = val
+        self.left, self.right = None, None
+"""
+
+
+class Solution:
+    """
+    @param: root: The root of binary tree.
+    @return: True if the binary tree is BST, or false
+    """
+    def helper (self, root, min, max):
+        # define: got the root, if root.val within min and max and left, right is True
+        # return True. Otherwise return false
+        # shrink: for root.left, update the max, for root. right, update the min
+        # out: if root.left == None and root.right == None, check the root.val
+        if root == None:
+            return True
+        if min != None and root.val <= min:
+            return False
+        if max != None and root.val >= max:
+            return False
+        left = self.helper (root.left, min, root.val)
+        right = self.helper (root.right, root.val, max)
+        if left and right:
+            return True
+        return False
+            
+    
+    def isValidBST(self, root):
+        # write your code here
+        if root is None:
+            return True
+        return self.helper (root, None, None)
+
