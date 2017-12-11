@@ -2,6 +2,8 @@
 # Second solution is always calculate if the last bits is 1 till num == 0. since the bits is continue shrink, we can think this will 
 # provide good answer here.
 # if we can't use any operation expect >> or <<, then we only have solution #3. >> means divided by 2 and should provide the solution
+# then solution 4 is use the bit checking method, by shifting 1 to left, we can check it bit by bit.
+# solution 5 not understand now, needed to check 
 # 移位运算符不是 a >> 1 而是 a >> = 1; 但是左移却是 << , 而不是 <<= 1
 
 // covert to string and count: 
@@ -47,4 +49,13 @@ def countOnes(self, num):
             if num & (1 << i) != 0:
                 count += 1
         return count
-    
+ 
+// Solution 4: 
+    public int countOnes(int num) {
+        int count = 0;
+        while (num != 0) {
+            num = num & (num - 1);
+            count++;
+        }
+        return count;
+    }
