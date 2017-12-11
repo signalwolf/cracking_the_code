@@ -1,0 +1,23 @@
+class Solution:
+    """
+    @param a, b: Two integer
+    return: An integer
+    """
+    def countone (self, num):
+        count = 0
+        n = 0
+        while num != 0 and n < 32: 
+            if num & 1:
+                count += 1
+            num >>= 1
+            n += 1
+        return count
+    
+    def bitSwapRequired(self, a, b):
+        # write your code here
+        c = a ^ b
+        # print bin (a ^ b)
+        if c == 0:
+            return 0
+        return self.countone(c)
+        
