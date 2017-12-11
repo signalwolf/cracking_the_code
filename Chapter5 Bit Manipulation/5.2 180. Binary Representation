@@ -1,3 +1,5 @@
+# Python 中精度的接收是有问题的，float type只能接收17位小数的精度；当我们需要超过它的小数时可以通过使用decimal来得到。
+
 from decimal import Decimal
 class Solution:
     """
