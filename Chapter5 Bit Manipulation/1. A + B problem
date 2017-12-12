@@ -1,0 +1,50 @@
+# check it bit by bit and add up
+# note the negative is not vaild since Python not handle the bits in correct way.
+class Solution:
+    # I needed be more careful about postive + negative: 
+    """
+    @param: a: An integer
+    @param: b: An integer
+    @return: The sum of a and b
+    """
+    def aplusb(self, a, b):
+        # write your code here
+        print bin(a), bin(b)
+        if b < 0:
+            b = b & ((1 << 32) - 1)
+        print bin(a), bin(b)
+        #if ( a > 0 and b > 0 ) or (a < 0 and b < 0):
+        c = a ^ b
+        #print bin(c)
+        advance = 0
+        mask = 1
+        for i in xrange (max (a.bit_length(), b.bit_length())):
+            # if the last one is 0, we need to seperate it into 0 + 0 == 0 and 1 + 1 == 0:
+            # if it is 0 + 0 == 0, then check advacne, if advance is 0, nothing; if advance is 1, then change curr bits to 1
+            # if it is 1 + 1 == 0, then check advance, if advane is 0, nothing, if advance is 1, then change curr bits to 1
+            # mask << 1
+            print bin(c), advance, bin(mask)
+            if (c & mask) == 0 and (a & mask) == 0:
+                #print 'case 1'
+                if advance == 1:
+                    c = c | mask 
+                advance = 0
+            elif (c & mask) == 0 and (a & mask) == mask:
+                #print 'case 2'
+                if advance == 1:
+                    c = c | mask 
+                advance = 1
+            # in this case, it either 1 + 0 or 0 + 1: does matter; if advance is 0, nothing; if advance is 1, change curr bit to 0 and advance = 1
+            else:
+                #print 'case 3'
+                #print bin(c & mask)
+                #print bin(a & mask) 
+                if advance == 1:
+                    c = c & (~mask)
+                    advance = 1    
+            mask = mask << 1
+        if advance == 1:
+            c = c | mask
+        if c < 0:
+            c = 2** (c.bit_length() -1 ) + c
+        return c - 2 ** 32
