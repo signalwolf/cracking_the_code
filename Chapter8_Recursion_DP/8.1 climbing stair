@@ -1,0 +1,30 @@
+# this is the standard module for the memory part: 
+
+class Solution(object):
+    def helper (self, n, memory):
+        if n == 0: return 1
+        if n == 1: return 1
+        if memory[n] == 0:
+            memory[n] = self.helper(n - 1, memory) + self.helper(n - 2, memory)
+        return memory[n]
+    
+    def climbStairs(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        # Solution #1: DP: bottom up: #37ms, 18%
+        # if n == 0 or n == 1: return 1
+        # dp = [0] * (n + 1)
+        # dp[0] = 1
+        # for i in xrange(1, n + 1):
+        #     dp[i] = dp[i - 1] + dp[i - 2] 
+        # return dp[n]
+        # Solution #2: recursive: passed, but time limit exceed at n == 35: 
+        # if n == 0: return 1
+        # if n == 1: return 1
+        # return self.climbStairs (n - 1) + self.climbStairs (n - 2)
+        # Solution #3: recursive with memory: # 35ms, 25%
+        return self.helper (n, [0] * (n + 1))
+        
+        
