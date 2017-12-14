@@ -1,0 +1,29 @@
+# Lintcode 17:
+class Solution:
+    
+    """
+    @param: nums: A set of numbers
+    @return: A list of lists
+    """
+    
+    def helper (self, nums, curr, result, start):
+        
+        #print curr, start, result
+       while start != len(nums):
+            result.append (curr + [nums[start]])
+            self.helper (nums, curr + [nums[start]], result, start + 1)
+            start += 1
+    
+    def subsets(self, nums):
+        # write your code here
+        # recursion:
+            # define : 
+            # out:
+            # initial: 
+        if len(nums) == 0:
+            return [[]]
+        nums.sort()
+        result, curr  = [], []
+        self.helper (nums, curr, result, 0)
+        result.append ([])
+        return result
