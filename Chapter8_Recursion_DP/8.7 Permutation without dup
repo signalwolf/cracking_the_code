@@ -1,4 +1,6 @@
 # lintcode 15: 
+# My solution #1 is keep trim the list and post to lower level, I think this is costly 
+# My solution #2 is basically keep an used list and update it. Then check if the used[start] is used. 
 class Solution:
     """
     @param: nums: A list of integers.
