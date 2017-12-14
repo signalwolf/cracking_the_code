@@ -1,15 +1,6 @@
 class Solution:
     # @return an integer
-    # def c(self, m, n):
-    #     mp = {}
-    #     for i in range(m):
-    #         for j in range(n):
-    #             if(i == 0 or j == 0):
-    #                 mp[(i, j)] = 1
-    #             else:
-    #                 mp[(i, j)] = mp[(i - 1, j)] + mp[(i, j - 1)]
-    #     return mp[(m - 1, n - 1)]
-
+    # solution #1: DP
     def uniquePaths(self, m, n):
         # return self.c(m, n)
         dp = [[0 for i in xrange(n)] for j in xrange (m)]
@@ -20,3 +11,29 @@ class Solution:
                 else:
                     dp [i][j] = dp [i - 1][j] + dp[i][j - 1]
         return dp[m - 1][n -1]
+    # solution #2: recursion: time limted exceed: 
+    class Solution:
+    def uniquePaths(self, m, n):
+        # write your code here
+        if m == 1 or n == 1: 
+            return 1
+        else:
+            return self.uniquePaths (m - 1, n) + self.uniquePaths (m, n - 1)
+    # solution #3: memory:
+    class Solution:
+    def helper (self, m , n, memory):
+        # define: m,n is the matrix, memory remembered if an node been visited.
+        # change: if curr node been visited, return memory[i][j]; else: divided into two smaller solution
+        # out: if m == 1 or n == 1: return 1
+        if m == 0 or n == 0:
+            return 1
+        if memory[m][n] == 0:
+            memory[m][n] = self.helper (m - 1, n, memory) + self.helper (m, n - 1, memory)
+        return memory[m][n]
+        
+    
+    def uniquePaths(self, m, n):
+        # write your code here
+        memory = [[0 for i in xrange(n)] for j in xrange (m)]
+        return self.helper (m - 1, n - 1, memory)
+    
