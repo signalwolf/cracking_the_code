@@ -1,0 +1,26 @@
+class Solution:
+    """
+    @param: :  A list of integers
+    @return: A list of unique permutations
+    """
+    def helper (self, nums, permutation, result, used):
+        if len(permutation) == len(nums):
+            #print permutation
+            result.append (permutation)
+        for i in xrange(len(nums)):
+            if used[i] == 1 or (i != 0 and  nums[i] == nums[i - 1] and used[i -1] == 0):
+                continue
+            used[i] = 1
+            self.helper (nums, permutation + [nums[i]], result, used)
+            used[i] = 0
+    
+    def permuteUnique(self, nums):
+        # write your code here
+        if nums is None:
+            return []
+        if len(nums) == 0:
+            return [[]]
+        permutation, result, used = [], [],[0] * len(nums)
+        nums.sort ()
+        self.helper (nums, permutation, result, used)
+        return result
