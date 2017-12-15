@@ -1,3 +1,5 @@
+# 42ms, 54%
+
 class Solution(object):
     def helper (self, left, right, n, curr, result):
         # print curr
