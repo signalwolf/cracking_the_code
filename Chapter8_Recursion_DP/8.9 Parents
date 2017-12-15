@@ -1,0 +1,30 @@
+class Solution(object):
+    def helper (self, left, right, n, curr, result):
+        # print curr
+        if left > n or right > n:
+            return 
+        if len(curr) == 2 * n:
+            result.append (curr)
+            return
+        if left == n:
+            self.helper (n, n, n , curr + ")" * (n - right), result)
+            return 
+        if left == right:
+            self.helper (left + 1, right, n , curr + "(", result)
+            return
+        if left > right:
+            self.helper (left + 1, right, n , curr + "(", result)
+            self.helper (left, right + 1, n , curr + ")", result)
+        
+    
+    def generateParenthesis(self, n):
+        """
+        :type n: int
+        :rtype: List[str]
+        """
+        # define: left, right, curr, result, n
+        # change: if left == 3, curr + ')' * (2 * n - left - right)
+        # return: if len(curr) == n * 2: add it to result
+        result = []
+        self.helper (0, 0, n , '', result)
+        return result
