@@ -1,0 +1,29 @@
+# this is my solution :). think the define, change, return part clear and then you can make the solution part.
+class Solution(object):
+    def helper (self, nums, index, curr, result, used):
+        for i in xrange (index, len(nums)):
+            if i != 0 and (nums[i - 1] == nums[i] and used[i - 1] == 0):
+                continue
+            result.append (curr + [nums[i]])
+            used[i] = 1
+            self.helper (nums, i + 1, curr + [nums[i]], result, used)
+            used[i] = 0
+            
+    def subsetsWithDup(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        # subset with dup
+        # define: nums, index, curr, result
+        # change: loop through the nums, keep a used to track if nums[index -1] == nums[index] and used[index - 1] = 0, skip it
+        # otherwise, it is the same.
+        # [1] --> [1,2] --> [1,2,3]
+        # [2] --> [2,3] ([2,2], nums[index] == nums[index - 1] and used [index -1] == 1)
+        # [3] (None nums[index] == nums [index - 1] and used [index -1] == 0)
+        # return: loop over all
+        nums.sort()
+        if len(nums) == 0: return [[]]
+        result, used = [[]], [0] * len(nums)
+        self.helper (nums, 0, [], result, used)
+        return result
