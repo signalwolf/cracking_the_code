@@ -1,4 +1,4 @@
-# don't forgot to sort the arrage: 
+q# don't forgot to sort the arrage: 
 # same solution, it just need to think the duplicate cases. 
 class Solution:
     """
