@@ -27,3 +27,35 @@ class Solution:
         self.helper (nums, curr, result, 0)
         result.append ([])
         return result
+
+# 07:13 -- 07:39: 25mins
+# run time: 78ms, 4.8%; 58ms, 28%; 55ms, 34%; 46ms, 76%
+
+class Solution(object):
+    def helper (self, n, nums):
+        # notice the original len(nums) == 1 case
+        output = []
+        if n == len(nums):
+            output = [nums]
+        elif n == 1:
+            for i in nums:
+                output.append ([i])
+        else:
+            for i in xrange (len(nums)):
+                feedback = self.helper ( n - 1, nums[i + 1: ])
+                for temp in feedback:
+                    output.append ([nums[i]] + temp)
+        return output
+        
+    def subsets(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        if len(nums) >= 0:
+            output = [[]]
+        for i in xrange (1, len(nums) + 1):
+            feedback = self.helper (i , nums)
+            for i in feedback:
+                output.append (i)
+        return output
