@@ -1,2 +1,17 @@
+Recursion divide and conquer
+Recursion tranverse
+----- Recursion with memory (maybe two method mentiond above) 
+DP
+BFS with Queue
+----- DFS with Stack
+DFS with recursion
+Bit manuplation
+----- Sorting: merge sort, heap sort, quick sort ...
+Binary Tree in order, pre order, post order using recursion
+----- Binary Tree in order, pre order, post order using stack
+Binary Tree level order
+Linked list: Fast, slow node
+Linked list: reverse, insert, pop, merge
+
 Bit change neede to study
 why [0] * nums could work?
