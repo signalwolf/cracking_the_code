@@ -1,3 +1,5 @@
+# don't forgot to sort the arrage: 
+# same solution, it just need to think the duplicate cases. 
 class Solution:
     """
     @param: :  A list of integers
@@ -23,4 +25,87 @@ class Solution:
         permutation, result, used = [], [],[0] * len(nums)
         nums.sort ()
         self.helper (nums, permutation, result, used)
+        return result
+
+# 09:19 -- 09:51
+# run time: 129ms, 28%; 109ms, 59%; 138ms, 22%
+class Solution(object):
+    def permuteUnique(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        nums.sort ()
+        lens = len(nums)
+        if lens == 1:
+            return [nums]
+        if lens == 0:
+            return nums
+        if lens == 2:
+            if nums[0] == nums[1]:
+                #print nums, nums
+                return [nums]
+            else:
+                #print [[nums[0], nums[1]], [nums[1], nums[0]]], nums
+                return [[nums[0], nums[1]], [nums[1], nums[0]]]
+        else:
+            output = []
+            for i in xrange(lens):
+                if i == 0:
+                    temp_nums = nums[1:]
+                    result = self.permuteUnique (temp_nums)
+                    if type(result[0]) != type(1):
+                        for x in result:
+                            output.append( [nums[i]] + x)
+                    else:
+                        output.append ([nums[i]] + result)
+                elif nums[i] == nums[i - 1]:
+                    continue
+                else:
+                    if i == lens:
+                        temp_nums = nums[:-1]
+                    else:
+                        temp_nums = nums[:i] + nums[i+1 :]
+                    result = self.permuteUnique (temp_nums)
+                    if type(result[0]) != type(1):
+                        for x in result:
+                            output.append( [nums[i]] + x)
+                    else:
+                        output.append ([nums[i]] + result)
+            #print output, nums
+            return output
+            
+ # run time: 129ms, 35%
+ class Solution(object):
+    def helper (self, nums, curr, result, used):
+        if len(curr) == len(nums): 
+            result.append (curr)
+            return 
+        for i in xrange (len(nums)):
+            if i == 0:
+                if used[i] != 1:
+                    used [i] = 1
+                    self.helper (nums, curr + [nums[i]], result, used)
+                    used [i] = 0
+            elif nums [i] == nums[i -1] and used [i - 1] == 0:
+                continue
+            else:
+                if used[i] != 1:
+                    used [i] = 1
+                    self.helper (nums, curr + [nums[i]], result, used)
+                    used [i] = 0
+                
+    
+    def permuteUnique(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        # define: nums, used, curr, result
+        # change: loop nums, if nums[i] == nums[i - 1] and used [i - 1] is false, then skip; other sceanrio is same.
+        # return: if len(nums) == len(curr), add to result
+        if len(nums) == 0: return [[]]
+        nums.sort()
+        result = []
+        self.helper (nums, [], result, [0] * len(nums))
         return result
