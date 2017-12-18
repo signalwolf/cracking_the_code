@@ -1,17 +1,79 @@
-Recursion divide and conquer
-Recursion tranverse
------ Recursion with memory (maybe two method mentiond above) 
-DP
-BFS with Queue
------ DFS with Stack
-DFS with recursion
-Bit manuplation
------ Sorting: merge sort, heap sort, quick sort ...
-Binary Tree in order, pre order, post order using recursion
------ Binary Tree in order, pre order, post order using stack
-Binary Tree level order
-Linked list: Fast, slow node
-Linked list: reverse, insert, pop, merge
+Must have before interview:
+  Binary search template
+  Binary tree preorder, inorder non recursion solution
+  Binary tree level order
+  Binary tree preroder, inorder, post order recursion solution
+  Insert a node in sorted list
+  remove a node from linked list
+  reverse a linked list
+  merge two linked list
+  middle of linked list
+  linked list cycle
+  Clone Graph
+  Topological sorting
+  DFS using stack
 
-Bit change neede to study
-why [0] * nums could work?
+1. Binary Search:
+  a. Binary Search Template by JiuZhang.
+  b. More details about Binary search. 
+      1. 循环结束条件： start <= end; start < end; start + 1 < end
+      2. 指针的变化：start = mid; start = mid + 1; start = mid - 1
+  c. binary search 的本质是保留有解的一半，丢弃一半。
+  d. 比 O(n) 更好的方法往往只能是 Binary search的 O(log(n))
+  e. Binary search 不一定是在值上search，还可以在位置上，答案中。
+2. Binary Tree:
+  a. Top Down: Traverse
+  b. Bottom up: Divide and conquer
+  c. Most important skill: Binary Tree preorder/ inorder/ postorder traverse/ BFS binary tree
+  d. Other skills: solve questions using stack/ traverse/ divide and conquer; BFS; BST (binary search tree)
+  e. Most of binary tree problem can be resolved using traverse or divide and conquer method. 
+  f. BST: 
+    1. 左子树比根节点小，右子树比根节点大，若是有重复的元素，最好问面试官是将它放在左子树还是右子树
+    2. 它的中序遍历是升序序列，但是要注意的是如果有重复的元素，这个特性就不能用于判断是否是BST。因为可能左边有一个右边有一个，这样不满足条件。
+3. DP and DFS recursion:
+  a. Three way to resolve issue:
+    1. Brute force recursion: longest way. From R[n] to R[n-1] then R[n - 2] .... Maybe have duplicate, for example
+    R[n] = R[n - 1] + R[n - 2]. Then R[n -2] is already calculated in R[n - 1]'s second level R[(n -1 ) - 1]
+    2. recursion with memory: spend addition memory and save the time. Brute force recursion have duplicate works.
+      Benifit: easy to change from search alogrithm and recursion problem;
+      cost: recursion
+    3. DP: from DP[0] to DP[n].
+      Benefit: formal and easy to accpet
+      Cost: hard to find the way to solve it; Space complexisty can be optimized. 
+  b. Key word for recursion: 
+    1. Define: the recursion shall accept which parameters?
+    2. Change: how to divide the recursion into few smaller problem ? 
+    3. Return: once it come to the smallest problem, how can you resolve it with no addtional info? 
+  c. key word for DP:
+    1. State: what DP[i] means?
+    2. Function: how DP[i] transit to DP[i + 1] or from DP[i -1]
+    3. Initial: how to define DP[0]
+    4. Anser: what shall we return ? DP[n]
+  d. when use DP: following three is most possible statement for DP: 
+    1. find the max, min
+    2. see if have a solution
+    3. count how many solution.
+  e. when not use DP:
+    1. find all solution
+    2. input is a set instead of a sequence.
+    3. If the brute force solution already n ^ k; DP is good at change 2^n or n! solution to n^k. If brute force solution is alread 
+    goes to n^k, then it is not possible for DP to further optimize it. 
+  f. 面试中是否使用recursion的判断条件：
+    a. 面试官是否要求了不使用recursion? 最好向面试官询问
+    b. 不用 recursion 是否会造成实现变得非常的复杂
+    c. Recursion的深度是否会很深
+    d. 题目考点是 recursion vs non-recursion 还是说考你是否会recursion.
+4. Linked List: 
+  a. Dummy Node: when the structure of linked list changed, have a dummy node can head to return the head.
+  b. Most important skills: 
+    Insert a node in sorted list, remove a node from linked list, reverse a linked list, merge two linked list, middle of linked list
+5. search (BFS and DFS):
+  a. BFS: Graph Traversal, shortest path in simple graph; (BFS can calcuate the distance from original node)
+  b. DFS: if wanted to check all solution, then must be DFS. 90% DFS shall be either permutation or subset
+6. sort: 
+  a. bubble sort: O(n ^ 2), O(1): swap two, smaller on left, repeat till end so the smallest in most right; repeat again find the second smallest one
+  b. merge sort: O(n log (n)), O(n): divide to individual, merge two together till back to first level. 
+  c. Quick sort: O(n log (n)), O(log(n)): randomly find a node, put all node smaller than itself to its left, lerger one in right; repeat.
+  d. Radix sort: O(kn), use the defination of problem, put few things into one pocket, then sort inside, then merge.
+  e. heap sort
+7. Bit manuplation
