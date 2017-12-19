@@ -1,0 +1,3 @@
+# This problem is simple. 
+# simply use the binary search and if middle is sparse, then move it to left/rigth together till find a word.
+# then based on the word's char, move the middle pointer.
