@@ -77,3 +77,7 @@ Must have before interview:
   d. Radix sort: O(kn), use the defination of problem, put few things into one pocket, then sort inside, then merge.
   e. heap sort
 7. Bit manuplation
+  a. use bits as a record, tracking which one is in, which one is out.
+  b. 10 bits system can track 1024 values
+  c. for example, I have hudge data with all numbers, I wanted to check if some integer is there or not. Then use bits resolve 
+  this much less space complex.
