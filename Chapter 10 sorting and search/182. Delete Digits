@@ -1,0 +1,27 @@
+class Solution:
+    """
+    @param: A: A positive integer which has N digits, A is a string
+    @param: l: Remove k digits
+    @return: A string
+    """
+    def DeleteDigits(self, A, l):
+        # write your code here
+        # pop out the biggest l number
+        out = len(A) - l 
+        A = list (A)
+        while l != 0 :
+            flag = 0 
+            for i in xrange (len(A) - 1):
+                # i + 1 shall be bigger: 
+                if flag == 0:
+                    if A[i] > A[i + 1]:
+                        temp = A[i]
+                        A[i] = A[i + 1]
+                        A[i + 1] = temp
+                        flag = 1
+                else:
+                    temp = A[i]
+                    A[i] = A[i + 1]
+                    A[i + 1] = temp
+            l -= 1
+        return str(int(''.join(A)[:out]))
