@@ -1,2 +1,25 @@
-# my thought is sort the list by the lens first, then in each lens, brute force to have the solution.
-# 
+# my thought is sort the list by the lens first, then in each lens, brute force to have the solution. This solution is too 
+# complicated, checked the answer, it simply use sort and dictionary to have the result
+# I shall ask the interviewer to have more info before I got start with the problem
+# Leetcode 49, lintcode 171. 
+# 12:10 -- 12:16
+# 225ms, 68%; 232, 58%; 222ms, 71%
+class Solution(object):
+    def groupAnagrams(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: List[List[str]]
+        """
+        dicts = {}
+        for i in strs:
+            curr = ''.join(sorted(list(i)))
+            #print curr
+            if curr in dicts:
+                dicts[curr].append (i)
+            else:
+                dicts[curr] = [i]
+        output = []
+        #print dicts
+        for val in dicts.values():
+            output.append (val)
+        return output
