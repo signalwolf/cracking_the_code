@@ -1,0 +1,51 @@
+class Solution:
+    """
+    @param: matrix: A list of lists of integers
+    @param: target: An integer you want to search in matrix
+    @return: An integer indicate the total occurrence of target in the given matrix
+    """
+    
+    def binarysearch (self, matrix, target, start, end, row, column):
+        if row == -1:
+            while start + 1 < end:
+                mid = (start + end) / 2
+                if matrix [mid][column] < target:
+                    mid = start
+                elif matrix[mid][column] > target:
+                    end = start
+                else:
+                    return mid
+            if matrix[start][column] == target:
+                return start
+            if matrix[end][column] == target:
+                return end
+            else:
+                return end
+        if column == -1:
+            while start + 1 < end:
+                mid = (start + end) / 2
+                if matrix [row][mid] < target:
+                    mid = start
+                elif matrix[row][mid] > target:
+                    end = start
+                else:
+                    return mid
+            if matrix[row][start] == target:
+                return start
+            if matrix[row][end] == target:
+                return end
+            else:
+                return end
+    
+    def searchMatrix(self, matrix, target):
+        # write your code here
+        m = len(matrix)
+        if m == 0:
+            return 0
+        n = len(matrix[0])
+        if n == 0:
+            return 0
+        end_column = self.binarysearch (matrix, target, 0, n, 1, -1)
+        end_row = self.binarysearch (matrix, target, 0, m, -1, 1)
+        print end_column, end_row
+        return 3
