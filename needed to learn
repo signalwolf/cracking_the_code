@@ -80,4 +80,4 @@ Must have before interview:
   a. use bits as a record, tracking which one is in, which one is out.
   b. 10 bits system can track 1024 values --> use bits to tracking this. 
   c. for example, I have hudge data with all numbers, I wanted to check if some integer is there or not. Then use bits resolve 
-  this much less space complex.
+  this much less space complex. --> In JAVA, there is sth called bitset, but in python there is nothing like this in standard library. 
