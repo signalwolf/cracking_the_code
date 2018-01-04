@@ -25,11 +25,16 @@ Must have before interview:
   a. Top Down: Traverse
   b. Bottom up: Divide and conquer
   c. Most important skill: Binary Tree preorder/ inorder/ postorder traverse/ BFS binary tree
-  d. Other skills: solve questions using stack/ traverse/ divide and conquer; BFS; BST (binary search tree)
+  d. Other skills: solve questions using stack/ traverse/ divide and conquer; BFS; BST (binary search tree) validation, 
   e. Most of binary tree problem can be resolved using traverse or divide and conquer method. 
   f. BST: 
     1. 左子树比根节点小，右子树比根节点大，若是有重复的元素，最好问面试官是将它放在左子树还是右子树
     2. 它的中序遍历是升序序列，但是要注意的是如果有重复的元素，这个特性就不能用于判断是否是BST。因为可能左边有一个右边有一个，这样不满足条件。
+  g. more skills needed on binary tree:
+    1. Build an binary tree from the list (in/post/pre order)
+    2. Check if two binary tree is same or not
+    3. invert binary tree, symmetric tree
+    4. Binary tree path calculation
 3. DP and DFS recursion:
   a. Three way to resolve issue:
     1. Brute force recursion: longest way. From R[n] to R[n-1] then R[n - 2] .... Maybe have duplicate, for example
