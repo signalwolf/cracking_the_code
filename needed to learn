@@ -76,6 +76,8 @@ Must have before interview:
   c. Quick sort: O(n log (n)), O(log(n)): randomly find a node, put all node smaller than itself to its left, lerger one in right; repeat.
   d. Radix sort: O(kn), use the defination of problem, put few things into one pocket, then sort inside, then merge.
   e. heap sort
+  f. selection sort: O(n ^ 2), same as bubble sort. It just don't waste time in swap two value, it record the max index, and at end, it only swap once for the last element and max element. 
+  g. insertion sort: O (n ^ 2). 
 7. Bit manuplation
   a. use bits as a record, tracking which one is in, which one is out.
   b. 10 bits system can track 1024 values --> use bits to tracking this. 
