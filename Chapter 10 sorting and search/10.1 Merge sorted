@@ -21,7 +21,7 @@ class Solution:
                 C.append(temp)
         return C
 
-# Save some space: 
+# Save some space: move forward
 class Solution:
     """
     @param: A: sorted integer array A
@@ -45,4 +45,28 @@ class Solution:
             temp += 1
         if j != lenB:
             A[temp:] = B[j:]
+        return A
+
+#Save some space: move backward:
+class Solution:
+    """
+    @param: A: sorted integer array A
+    @param: B: sorted integer array B
+    @return: A new sorted integer array
+    """
+    def mergeSortedArray(self, A, B):
+        # write your code here
+        A_ind, B_ind = len(A) - 1, len(B) - 1
+        A = A + [0] * len(B)
+        R_ind = len (A) - 1
+        while A_ind >= 0 and B_ind >= 0:
+            if A[A_ind] > B[B_ind]:
+                A[R_ind] = A[A_ind]
+                A_ind -= 1
+            else:
+                A[R_ind] = B[B_ind]
+                B_ind -= 1
+            R_ind -= 1
+        if B_ind >= 0:
+            A[:B_ind + 1] = B[:B_ind + 1]
         return A
